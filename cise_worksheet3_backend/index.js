@@ -1,24 +1,31 @@
 // app.js
 
-const express = require('express')
+const express = require('express');
 const dotenv = require('dotenv')
 dotenv.config({ path: './.env' })
 
-// add books route
-const books = require('./app/routes/api/books')
+const connectDB = require('./app/config/db');
+const cors = require('cors');
 
-const connectDB = require('./app/config/db')
+// routes
+const books = require('./app/routes/api/books');
 
-const app = express()
+const app = express();
 
 // Connect Database
-const db = connectDB()
+connectDB();
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+// cors
+app.use(cors({ origin: true, credentials: true }));
 
-app.use('/api/books', books)
+// Init Middleware
+app.use(express.json({ extended: false }));
 
-const port = process.env.SERVER_PORT || 8082
-app.listen(port, () => console.log(`Server running on port ${port}`))
+app.get('/', (req, res) => res.send('Hello world!'));
+
+// use Routes
+app.use('/api/books', books);
+
+const port = process.env.PORT || 8082;
+
+app.listen(port, () => console.log(`Server running on port ${port}`));
