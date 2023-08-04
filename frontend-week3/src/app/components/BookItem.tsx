@@ -21,6 +21,7 @@ const BookCard: React.FC<BookCardProps> = (props) => {
         src='https://images.unsplash.com/photo-1495446815901-a7297e633e8d'
         alt='Books'
         height={200}
+        width={300}
       />
       <div className='desc'>
         <h2>
