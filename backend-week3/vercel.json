@@ -1,12 +1,14 @@
 {
     "version": 2,
-    "builds": [
-        { "src": "package.json", "use": "@vercel/node" }
-    ],
+    "functions": {
+        "api/**/*.[jt]s": {
+          "runtime": "@vercel/node"
+        }
+    },
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "dist/main.js",
-        }
+            "src": "/api/(.*)",
+            "dest": "/api/$1"
+          }
     ]
 }
