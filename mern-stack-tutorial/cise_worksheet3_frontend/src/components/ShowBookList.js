@@ -9,7 +9,7 @@ function ShowBookList() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8082/api/books')
+      .get(process.env.REACT_APP_API_URL + '/books')
       .then((res) => {
         setBooks(res.data);
       })
