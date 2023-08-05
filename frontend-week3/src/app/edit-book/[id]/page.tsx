@@ -37,7 +37,8 @@ const UpdateBookInfo = ({ params }: IProps) => {
   useEffect(() => {
     if (typeof id === "string") {
       axios
-        .get(`http://localhost:8082/api/books/${id}`)
+        // .get(`http://localhost:8082/api/books/${id}`)
+        .get(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/books/${id}`)
         .then((res) => {
           setBook(res.data);
         })
@@ -56,7 +57,8 @@ const UpdateBookInfo = ({ params }: IProps) => {
 
     if (typeof id === "string") {
       axios
-        .put(`http://localhost:8082/api/books/${id}`, book)
+        // .put(`http://localhost:8082/api/books/${id}`, book)
+        .put(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/books/${id}`, book)
         .then((res) => {
           router.push(`/show-book/${id}`);
         })

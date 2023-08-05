@@ -24,7 +24,8 @@ const CreateBook: React.FC = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8082/api/books", book)
+      // .post("http://localhost:8082/api/books", book)
+      .post(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/books`, book)
       .then((res) => {
         setBook({
           title: "",

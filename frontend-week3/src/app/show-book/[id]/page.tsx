@@ -31,7 +31,8 @@ const ShowBookDetails = ({ params }: IProps) => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:8082/api/books/${id}`)
+        // .get(`http://localhost:8082/api/books/${id}`)
+        .get(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/books/${id}`)
         .then((res) => {
           setBook(res.data);
         })
@@ -43,7 +44,8 @@ const ShowBookDetails = ({ params }: IProps) => {
 
   const onDeleteClick = (id: string) => {
     axios
-      .delete(`http://localhost:8082/api/books/${id}`)
+      // .delete(`http://localhost:8082/api/books/${id}`)
+      .delete(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/books/${id}`)
       .then((res) => {
         router.push('/');
       })

@@ -22,6 +22,7 @@ const BookCard: React.FC<BookCardProps> = (props) => {
         alt='Books'
         height={200}
         width={300}
+        priority
       />
       <div className='desc'>
         <h2>
